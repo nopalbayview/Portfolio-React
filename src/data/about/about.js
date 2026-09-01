@@ -23,25 +23,25 @@ export const profileCardsData = [
     {
         id: 1, 
         title: 'Profile 1', 
-        image: '/public/projects/Jiwoo1.jpeg', 
+        image: '/projects/Jiwoo1.jpeg', 
         tag: 'Developer'
     },
     { 
         id: 2, 
         title: 'Profile 2', 
-        image: '/public/projects/Jiwoo2.jpeg', 
+        image: '/projects/Jiwoo2.jpeg', 
         tag: 'Creative' 
     },
     { 
         id: 3, 
         title: 'Profile 3', 
-        image: '/public/projects/Jiwoo3.jpeg', 
+        image: '/projects/Jiwoo3.jpeg', 
         tag: 'Thinker' 
     },
     { 
         id: 4, 
         title: 'Profile 4', 
-        image: '/public/projects/Jiwoo4.jpeg', 
+        image: '/projects/Jiwoo4.jpeg', 
         tag: 'Builder' 
     },
 ];

@@ -5,7 +5,7 @@ export const projectList = [
         description: 'A minimalist personal project used car sales with data JSON.',
         tags: ['HTML', 'CSS', 'JavaScript', 'ChartJS'],
         githubUrl: 'https://github.com/nopalbayview/jsonchartjs',
-        image: '/public/projects/chartimg.png',
+        image: '/projects/chartimg.png',
         year: '2026',
     },
     {
