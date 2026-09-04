@@ -5,8 +5,13 @@ export default function Hero() {
     return (
       <section 
         id="hero" 
-        className="min-h-screen w-full flex flex-col items-center justify-center text-center px-6"
+        className="relative overflow-hidden min-h-screen w-full flex flex-col items-center justify-center text-center px-6"
       >
+
+        <div 
+          aria-hidden="true" 
+          className="absolute top-0 bottom-0 left-[50%] w-[100vw] -translate-x-1/2 bg-grid-pattern opacity-70 pointer-events-none [mask-image:linear-gradient(to_bottom,transparent,black_20%,black_80%,transparent)]" 
+        />
         <motion.h1
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0}}

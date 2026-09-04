@@ -28,8 +28,12 @@ export default function AboutHero() {
   return (
     <section 
       id="hero" 
-      className="min-h-screen w-full flex items-center justify-center pt-24 pb-16 transition-colors duration-300"
+      className="relative overflow-hidden min-h-screen w-full flex items-center justify-center pt-24 pb-16 transition-colors duration-300"
     >
+      <div 
+        aria-hidden="true" 
+        className="absolute top-0 bottom-0 left-[50%] w-[100vw] -translate-x-1/2 bg-grid-pattern opacity-70 pointer-events-none" 
+      />
       <div className="w-full max-w-6xl mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center md:items-start justify-center gap-12 lg:gap-24">
         
         {/* KIRI: STACKED ANIMATED PHOTOS */}

@@ -11,8 +11,11 @@ export default function Projects() {
   }, []);
 
   return (
-    <div className="w-full min-h-screen pt-32 pb-24 text-[#121212] dark:text-white font-sans transition-colors duration-300">
-      
+    <div className="relative overflow-hidden w-full min-h-screen pt-32 pb-24 text-[#121212] dark:text-white font-sans transition-colors duration-300">
+      <div 
+          aria-hidden="true" 
+          className="absolute top-0 bottom-0 left-[50%] w-[100vw] -translate-x-1/2 bg-grid-pattern opacity-70 pointer-events-none" 
+        />
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         
         {/* HEADER HALAMAN */}

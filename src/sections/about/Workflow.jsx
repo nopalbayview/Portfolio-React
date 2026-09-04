@@ -11,7 +11,7 @@ export default function Workflow() {
 
       <div 
         aria-hidden="true" 
-        className="absolute inset-0 w-full h-full bg-grid-pattern opacity-70 pointer-events-none" 
+        className="absolute top-0 bottom-0 left-[50%] w-[100vw] -translate-x-1/2 bg-grid-pattern opacity-70 pointer-events-none" 
       />
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-12 pb-16">

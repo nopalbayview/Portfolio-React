@@ -25,13 +25,15 @@
 /* Background Grid Khusus Section Lokal */
 .bg-grid-pattern {
   background-size: 50px 50px;
-  background-image: 
-    linear-gradient(to right, rgba(0, 0, 0, 0.07) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0, 0, 0, 0.07) 1px, transparent 1px);
+  background-position: 0 0; /* Paksa mulai dari titik nol mutlak */
   
-  /* Fade halus di sisi atas dan bawah section saja */
-  -webkit-mask-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 1) 10%, rgba(0, 0, 0, 1) 90%, transparent);
-  mask-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 1) 10%, rgba(0, 0, 0, 1) 90%, transparent);
+  /* Gunakan 90deg dan 180deg agar garisnya 100% tegak lurus */
+  background-image: 
+    linear-gradient(90deg, rgba(0, 0, 0, 0.07) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.07) 1px, transparent 1px);
+  
+  -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+  mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
 }
 
 :root {
@@ -46,9 +48,9 @@ html.dark {
 
 html.dark .bg-grid-pattern {
   background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.07) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
-}
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+} 
 
 body {
   background-color: inherit;
@@ -74,6 +76,12 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background: cyan;
+}
+
+/* Sembunyikan Scrollbar (Firefox & IE) */
+html, body {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
 
 /* Thumb Dark Mode */

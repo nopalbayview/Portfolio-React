@@ -14,6 +14,10 @@ export default function TechStack() {
       // PERUBAHAN: Menambahkan min-h-screen dan justify-center. Mengubah py-20 menjadi py-24
       className="relative w-full min-h-screen py-24 border-t-2 border-[#121212]/10 dark:border-white/5 overflow-hidden transition-colors duration-300 flex flex-col items-center justify-center"
     >
+      <div 
+          aria-hidden="true" 
+          className="absolute top-0 bottom-0 left-[50%] w-[100vw] -translate-x-1/2 bg-grid-pattern opacity-70 pointer-events-none" 
+        />
       {/* Judul Bagian */}
       <div className="w-full max-w-6xl mx-auto px-6 md:px-12 mb-12 flex flex-col gap-20">
         <motion.h2
