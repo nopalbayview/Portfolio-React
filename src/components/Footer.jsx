@@ -121,7 +121,7 @@ export default function Footer() {
             BAHAGIAN BAWAH: Teks Raksasa & Motivasi
         ========================================= */}
         {/* flex-1 akan membuat kotak ini membesar mengisi seluruh sisa layar ke bawah */}
-        <div className="flex-1 flex flex-col justify-center items-center text-center py-16">
+        <div className="flex-1 flex flex-col justify-center items-center text-center py-16 pb-28">
           
           <h1 className="text-6xl md:text-8xl lg:text-[130px] leading-none font-bold uppercase tracking-widest font-sans text-[#121212] dark:text-white mb-6">
             NOPALBAY
