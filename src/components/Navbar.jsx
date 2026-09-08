@@ -91,11 +91,35 @@ export default function Navbar() {
   }, [isMobileMenuOpen]);
 
   const navItems = [
-    { id: 'home', label: 'Home', icon: Home, path: '/' },
-    { id: 'about', label: 'About', icon: User, path: '/about' },
-    { id: 'projects', label: 'Projects', icon: Folder, path: '/projects' },
-    { id: 'contact', label: 'Contact', icon: MessageSquare, path: '/contact' },
-    { id: 'theme', label: isDark ? 'Light Mode' : 'Dark Mode', icon: isDark ? Sun : Moon, onClick: () => setIsDark(!isDark) },
+    { 
+      id: 'home', 
+      label: 'Home', 
+      icon: Home, 
+      path: '/' 
+    },
+    { 
+      id: 'about', 
+      label: 'About', 
+      icon: User, 
+      path: '/about' 
+    },
+    { 
+      id: 'projects', 
+      label: 'Projects', 
+      icon: Folder, 
+      path: '/projects' 
+    },
+    { 
+      id: 'contact', 
+      label: 'Contact', 
+      icon: MessageSquare, 
+      path: '/contact' 
+    },
+    { 
+      id: 'theme', 
+      label: isDark ? 'Light Mode' : 'Dark Mode', 
+      icon: isDark ? Sun : Moon, onClick: () => setIsDark(!isDark) 
+    },
   ];
 
   const checkActive = (path) => {
@@ -127,7 +151,7 @@ export default function Navbar() {
           onMouseLeave={() => mouseX.set(Infinity)}
           className="relative flex items-end gap-3 px-4 pb-2 pt-4"
         >
-          <div className="absolute bottom-0 left-0 right-0 h-[60px] rounded-3xl bg-white/75 dark:bg-[#141414]/85 backdrop-blur-xl border border-neutral-200/80 dark:border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.15)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.6)] transition-colors duration-300 -z-10" />
+          <div className="absolute bottom-0 left-0 right-0 h-[60px] rounded-2xl bg-white/75 dark:bg-[#141414]/85 backdrop-blur-xl border border-neutral-200/80 dark:border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.15)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.6)] transition-colors duration-300 -z-10" />
           {navItems.map((item) => (
             <DockItem key={item.id} mouseX={mouseX} item={item} isActive={checkActive(item.path)} />
           ))}

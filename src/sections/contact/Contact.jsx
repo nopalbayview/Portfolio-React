@@ -73,15 +73,14 @@ export default function Contact() {
       <div className="max-w-6xl mx-auto px-6 md:px-12">
         
         {/* HEADER */}
-        <div className="mb-10">
+        <div className="relative z-10 w-full max-w-screen-2xl mx-auto px-6 md:px-1 space-y-20">
           <motion.h1 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="w-fit text-4xl sm:text-4xl uppercase font-bold tracking-tight hover-shimmer mb-2 select-none"
-          >
-            Contact
+            className="w-fit text-4xl md:text-5xl lg:text-6xl font-sans font-black tracking-tighter max-w-3xl leading-tight text-black dark:text-white">Contact
           </motion.h1>
+
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

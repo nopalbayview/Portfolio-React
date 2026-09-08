@@ -9,36 +9,31 @@ export default function TechStack() {
   const row2 = [...techRow2, ...techRow2, ...techRow2];
 
   return (
-    <section 
-      id="techstack"
-      // PERUBAHAN: Menambahkan min-h-screen dan justify-center. Mengubah py-20 menjadi py-24
-      className="relative w-full min-h-screen py-24 border-t-2 border-[#121212]/10 dark:border-white/5 overflow-hidden transition-colors duration-300 flex flex-col items-center justify-center"
-    >
+    <section id="techstack"
+      className="relative w-full py-24 overflow-hidden transition-colors duration-300">
+
       <div 
-          aria-hidden="true" 
-          className="absolute top-0 bottom-0 left-[50%] w-[100vw] -translate-x-1/2 bg-grid-pattern opacity-70 pointer-events-none" 
-        />
-      {/* Judul Bagian */}
-      <div className="w-full max-w-6xl mx-auto px-6 md:px-12 mb-12 flex flex-col gap-20">
+        aria-hidden="true" 
+        className="absolute top-0 bottom-0 left-[50%] w-[100vw] -translate-x-1/2 bg-grid-pattern opacity-70 pointer-events-none"
+      />
+      
+      <div className="relative z-10 w-full max-w-screen-2xl mx-auto px-6 md:px-6 mb-20 flex flex-col items-start text-left space-y-1">
         <motion.h2
-          initial={{ opacity: 0, x: 50 }}
+          initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0}}
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="w-fit ml-auto text-3xl sm:text-4xl md:text-3xl font-black tracking-tight text-[#121212] dark:text-white hover-shimmer cursor-pointer select-none uppercase"
-        >
-          Tech Stack
+          // Ukuran dibesarkan (lg:text-[80px]) dan jarak atas-bawah dirapatkan (leading-none)
+          className="w-fit text-5xl md:text-6xl lg:text-[80px] font-sans font-black tracking-tighter max-w-3xl leading-none text-black dark:text-white">Tech Stack
         </motion.h2>
 
-        {/* Paragraf Tengah */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0}}
+        <motion.p 
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-          className="text-center text-sm md:text-base text-[#121212]/70 dark:text-gray-400 max-w-2xl mx-auto font-sans leading-relaxed"
-        >
-          The tools and technologies I use to build scalable, high-performance web experiences.
+          transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
+          // Subtitle dibuat tebal (font-bold) dengan warna Cyan menyala
+          className="text-base md:text-sm font-bold text-gray-400 font-plex tracking-tight">Tools & Technologies
         </motion.p>
       </div>
 
@@ -93,11 +88,11 @@ export default function TechStack() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-50px" }}
         transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-        className="mt-24 px-6"
+        className="mt-24 px-6 flex justify-center relative z-10 mb-10"
       >
         <Link 
           to="/projects" 
-          className="bg-cyan-400 hover:bg-cyan-300 text-black font-black tracking-wide py-4 px-8 rounded-xl flex justify-center items-center gap-2 transition-all duration-300 active:scale-95 shadow-[0_0_15px_rgba(34,211,238,0.3)] hover:shadow-[0_0_25px_rgba(34,211,238,0.5)]"
+          className="inline-flex w-max bg-cyan-400 hover:bg-cyan-300 text-black font-black tracking-wide py-4 px-8 rounded-xl justify-center items-center gap-2 transition-all duration-300 active:scale-95 shadow-[0_0_15px_rgba(34,211,238,0.3)] hover:shadow-[0_0_25px_rgba(34,211,238,0.5)]"
         >
           See My Projects <ArrowRight size={18} />
         </Link>

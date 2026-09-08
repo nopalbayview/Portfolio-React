@@ -6,25 +6,32 @@ import GlowCard from '../../components/Glowcard';
 
 export default function Education () {
   return (
-    <section 
-      id="education" 
-      className="relative w-full py-28 border-t-2 border-[#121212]/10 dark:border-white/5 overflow-hidden transition-colors duration-300"
-    >
+    <section id="education" 
+      className="relative w-full py-15 overflow-hidden transition-colors duration-300">
+
       {/* Layer Grid Pattern Khusus Education */}
       <div 
         aria-hidden="true" 
         className="absolute top-0 bottom-0 left-[50%] w-[100vw] -translate-x-1/2 bg-grid-pattern opacity-70 pointer-events-none" 
       />
 
-      <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-12 space-y-20">
+      <div className="relative z-10 w-full max-w-screen-2xl mx-auto px-6 md:px-6 mb-20 flex flex-col items-start text-left space-y-1">
         <motion.h2
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0}}
+          initial={{ opacity: 0, x: -50 }} // Disamakan dengan Tech Stack (muncul dari kiri)
+          whileInView={{ opacity: 1, x: 0}}
           viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
-          className="w-fit text-3xl sm:text-4xl md:text-3xl uppercase font-bold tracking-tight max-w-3xl leading-tight text-[#121212] dark:text-white transition-colors duration-300 hover-shimmer cursor-pointer select-none">
-          Education
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="w-fit text-4xl md:text-5xl lg:text-6xl font-sans font-black tracking-tighter max-w-3xl leading-tight text-black dark:text-white">Education
         </motion.h2>
+
+        <motion.p 
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
+          // Subtitle dibuat tebal (font-bold) dengan warna Cyan menyala
+          className="text-base md:text-sm font-bold text-gray-400 font-plex tracking-tight mb-16">Graduation
+        </motion.p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {educations.map((edu, idx) => {
@@ -46,7 +53,6 @@ export default function Education () {
             const glow = glowColors[idx % glowColors.length];
 
             return (
-              // MENGGUNAKAN GLOWCARD
               <GlowCard 
                 key={idx} 
                 glowColor={glow.primary}
@@ -55,27 +61,27 @@ export default function Education () {
                 whileInView={{ opacity: 1, y: 0}}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: 0.2 + (idx * 0.15), ease: "easeOut" }}
-                // Hapus border & bg, biarkan GlowCard bekerja
-                className={`group w-full h-full shadow-xl transition-all duration-500 hover:scale-[1.02] cursor-pointer ${edu.hoverBorder}`}
+                // PERUBAHAN: Menambahkan min-h-[350px] agar card lebih tinggi secara seragam
+                className={`group w-full h-full min-h-[350px] shadow-xl transition-all duration-500 hover:scale-[1.02] cursor-pointer ${edu.hoverBorder}`}
               >
                 
-                {/* Pindahkan padding dan relative ke dalam div ini */}
                 <div className="relative p-8 h-full w-full flex flex-col">
                   
-                  {/* Kirim warnanya ke komponen Shader */}
                   <EducationShader color={shaderColor} />
                   
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent pointer-events-none z-10" />
+                  {/* Gradient hitam ditinggikan sedikit (via-black/60) agar teks lebih mudah dibaca di atas shader */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent pointer-events-none z-10" />
 
-                  <div className="relative z-20 flex flex-col h-full justify-between"> 
-                      <h3 className="text-lg font-bold text-white font-sans group-hover:text-cyan-400 transition-colors duration-300">
+                  {/* PERUBAHAN: Menggunakan justify-end agar teks mengelompok rapi di bagian bawah card */}
+                  <div className="relative z-20 flex flex-col h-full justify-end"> 
+                      <h3 className="text-xl font-bold text-white font-sans group-hover:text-cyan-400 transition-colors duration-300">
                         {edu.title}
                       </h3>
                       <div className="my-4 h-[1px] w-full bg-white/10" />
-                      <span className="text-xs font-mono text-cyan-400">
+                      <span className="text-sm font-mono text-cyan-400">
                         {edu.period}
                       </span>
-                      <p className="mt-2 text-xs text-gray-300 leading-relaxed font-sans">
+                      <p className="mt-2 text-sm text-gray-300 leading-relaxed font-sans">
                         {edu.desc}
                       </p>
                   </div>
