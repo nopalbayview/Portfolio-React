@@ -121,13 +121,13 @@ export default function Footer() {
             BAHAGIAN BAWAH: Teks Raksasa & Motivasi
         ========================================= */}
         {/* flex-1 akan membuat kotak ini membesar mengisi seluruh sisa layar ke bawah */}
-        <div className="flex-1 flex flex-col justify-center items-center text-center py-16 pb-28">
+        <div className="flex-1 flex flex-col justify-center items-center text-center py-16 px-4">
           
-          <h1 className="text-6xl md:text-8xl lg:text-[130px] leading-none font-bold uppercase tracking-widest font-sans text-[#121212] dark:text-white mb-6">
+          <h1 className="text-6xl md:text-8xl lg:text-[130px] leading-none font-bold uppercase tracking-widest font-sans text-[#121212] dark:text-white mb-6 transition-all duration-500 hover:text-transparent dark:hover:text-transparent hover:[-webkit-text-stroke:3px_#22d3ee] dark:hover:[-webkit-text-stroke:3px_#22d3ee] hover:drop-shadow-[0_0_30px_rgba(34,211,238,0.4)] cursor-default select-none">
             NOPALBAY
           </h1>
           
-          <p className="text-sm md:text-sm font-semibold tracking-[0.2em] text-[#121212]/60 dark:text-gray-400 uppercase">
+          <p className="text-xs md:text-sm font-semibold tracking-[0.2em] text-[#121212]/60 dark:text-gray-400 uppercase pointer-events-none">
             DON'T THINK TO HARD. MAKE MORE, IF YOU KNOW JUST DO IT.
           </p>
 

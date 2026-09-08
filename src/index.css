@@ -29,11 +29,11 @@
   
   /* Gunakan 90deg dan 180deg agar garisnya 100% tegak lurus */
   background-image: 
-    linear-gradient(90deg, rgba(0, 0, 0, 0.07) 1px, transparent 1px),
-    linear-gradient(180deg, rgba(0, 0, 0, 0.07) 1px, transparent 1px);
+    linear-gradient(90deg, rgba(0, 0, 0, 0.12) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.12) 1px, transparent 1px);
   
-  -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
-  mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 70%);
+  mask-image: radial-gradient(ellipse at center, black 40%, transparent 70%);
 }
 
 :root {
@@ -48,8 +48,8 @@ html.dark {
 
 html.dark .bg-grid-pattern {
   background-image: 
-    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
 } 
 
 body {
