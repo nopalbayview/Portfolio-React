@@ -1,21 +1,21 @@
 // src/data/about.js
-import { Code2, BarChart2, Server } from 'lucide-react';
+import { Code2, BarChart2, Server, AppWindow, Sparkles, Paintbrush, PaintRoller, Paintbrush2Icon, PaintbrushVerticalIcon, ZapIcon } from 'lucide-react';
 
 export const capabilitiesData = [
     {
-        title: 'Web Development',
-        description: 'Crafting responsive, interactive, and high-performance web applications using modern technologies like React and Tailwind CSS.',
-        icon: Code2,
+        title: 'Frontend Development',
+        description: 'Developing scalable and high-performance client-side applications focused on clean architecture and maintainability.',
+        icon: AppWindow,
     },
     {
-        title: 'Data Analyst',
-        description: 'Transforming raw data into meaningful insights, identifying patterns, and creating clear visualizations to drive better decisions.',
-        icon: BarChart2,
+        title: 'Creative Development',
+        description: 'Crafting immersive digital experiences with smooth animations, micro-interactions, and engaging web transitions.',
+        icon: Sparkles,
     },
     {
-        title: 'Backend Development',
-        description: 'Designing robust RESTful APIs, managing database structures, and ensuring secure, scalable server-side logic.',
-        icon: Server,
+        title: 'UI UX Designer',
+        description: 'Bridging the gap between design and code, ensuring pixel-perfect execution and seamless user journeys.',
+        icon: ZapIcon,
     },
 ];
 

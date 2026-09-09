@@ -17,7 +17,7 @@ export default function Education () {
 
       <div className="relative z-10 w-full max-w-screen-2xl mx-auto px-6 md:px-6 mb-20 flex flex-col items-start text-left space-y-1">
         <motion.h2
-          initial={{ opacity: 0, x: -50 }} // Disamakan dengan Tech Stack (muncul dari kiri)
+          initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0}}
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.6, ease: "easeOut" }}
@@ -29,7 +29,6 @@ export default function Education () {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
-          // Subtitle dibuat tebal (font-bold) dengan warna Cyan menyala
           className="text-base md:text-sm font-bold text-gray-400 font-plex tracking-tight mb-16">Graduation
         </motion.p>
 
@@ -61,8 +60,8 @@ export default function Education () {
                 whileInView={{ opacity: 1, y: 0}}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: 0.2 + (idx * 0.15), ease: "easeOut" }}
-                // PERUBAHAN: Menambahkan min-h-[350px] agar card lebih tinggi secara seragam
-                className={`group w-full h-full min-h-[350px] shadow-xl transition-all duration-500 hover:scale-[1.02] cursor-pointer ${edu.hoverBorder}`}
+                // PERUBAHAN: hover:scale-[1.02] telah dihapus agar card tetap diam saat di-hover
+                className={`group w-full h-full min-h-[350px] shadow-xl transition-all duration-500 cursor-pointer ${edu.hoverBorder}`}
               >
                 
                 <div className="relative p-8 h-full w-full flex flex-col">
@@ -72,7 +71,7 @@ export default function Education () {
                   {/* Gradient hitam ditinggikan sedikit (via-black/60) agar teks lebih mudah dibaca di atas shader */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent pointer-events-none z-10" />
 
-                  {/* PERUBAHAN: Menggunakan justify-end agar teks mengelompok rapi di bagian bawah card */}
+                  {/* Menggunakan justify-end agar teks mengelompok rapi di bagian bawah card */}
                   <div className="relative z-20 flex flex-col h-full justify-end"> 
                       <h3 className="text-xl font-bold text-white font-sans group-hover:text-cyan-400 transition-colors duration-300">
                         {edu.title}

@@ -91,7 +91,7 @@ export default function Footer() {
               <h4 className="text-sm font-semibold uppercase tracking-widest text-[#121212] dark:text-white font-sans">ABOUT</h4>
               <div className="flex flex-col space-y-3 text-sm text-gray-600 dark:text-gray-400">
                 <Link to="/about#hero" className="hover:text-cyan-500 dark:hover:text-cyan-400 font-medium font-sans transition-colors">About</Link>
-                <Link to="/about#workflow" className="hover:text-cyan-500 dark:hover:text-cyan-400 font-medium font-sans transition-colors">Workflow</Link>
+                <Link to="/about#workflow" className="hover:text-cyan-500 dark:hover:text-cyan-400 font-medium font-sans transition-colors">Services</Link>
               </div>
             </div>
 

@@ -11,50 +11,60 @@ export default function Projects() {
   }, []);
 
   return (
-    <div className="relative overflow-hidden w-full min-h-screen pt-32 pb-24 text-[#121212] dark:text-white font-sans transition-colors duration-300">
-      <div
-        aria-hidden="true"
+    <div className="relative overflow-hidden w-full min-h-screen pt-20 pb-24 text-[#121212] dark:text-white font-sans transition-colors duration-300">
+      <div 
+        aria-hidden="true" 
         className="absolute top-0 bottom-0 left-[50%] w-[100vw] -translate-x-1/2 bg-grid-pattern opacity-70 pointer-events-none"
       />
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
-
-        {/* HEADER HALAMAN TETAP SAMA... */}
-        <div className="mb-16 md:mb-24">
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
+      
+      {/* PERUBAHAN: Pembungkus UTAMA untuk Judul DAN Grid agar sejajar rapi */}
+      <div className="relative z-10 w-full max-w-screen-2xl mx-auto px-6 md:px-6">
+        
+        {/* =========================================
+            HEADER & SUBTITLE
+        ========================================= */}
+        <div className="mb-16 flex flex-col items-start text-left space-y-1">
+          <motion.h2
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0}}
+            viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="w-fit text-4xl sm:text-5xl md:text-4xl uppercase font-bold tracking-tight hover-shimmer mb-6 select-none"
+            // Teks dikoreksi menjadi "Projects"
+            className="w-fit text-5xl md:text-6xl lg:text-[80px] font-sans font-black tracking-tighter max-w-3xl leading-none text-black dark:text-white"
           >
-            All Projects
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-            className="text-base md:text-1 text-[#121212]/70 dark:text-gray-400 max-w-2xl leading-relaxed"
+            Projects
+          </motion.h2>
+
+          <motion.p 
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
+            // Subtitle diubah sedikit agar relevan dan memakai warna Cyan
+            className="text-base md:text-sm font-bold text-gray-400 font-plex tracking-tight"
           >
-            A collection of my recent work, ranging from web development to data analysis and system architecture.
+            My recent works and creations.
           </motion.p>
         </div>
 
-        {/* GRID KARTU PROJECT */}
+        {/* =========================================
+            GRID KARTU PROJECT
+        ========================================= */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {projectList.map((item, idx) => (
 
-            // GANTI <motion.div> MENJADI <GlowCard>
             <GlowCard
               key={idx}
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
-              // PASTIKAN class-nya bersih dari "border" seperti ini:
-              className="group w-full shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 cursor-pointer"
+              // PERUBAHAN: hover:-translate-y-2 dihapus agar kartu diam saat di-hover
+              className="group w-full shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer"
             >
 
-              {/* BAGIAN GAMBAR TETAP SAMA... */}
-              <div className="w-full aspect-[4/3] bg-gray-100 dark:bg-[#121214] flex items-center jus overflow-hidden relative border-b border-[#121212]/5 dark:border-white/5">
+              {/* BAGIAN GAMBAR */}
+              <div className="w-full aspect-[4/3] bg-gray-100 dark:bg-[#121214] flex items-center justify-center overflow-hidden relative border-b border-[#121212]/5 dark:border-white/5">
                 <div className="absolute inset-0 opacity-20 bg-grid-pattern pointer-events-none" />
                 <img
                   src={item.image}
@@ -65,7 +75,7 @@ export default function Projects() {
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
               </div>
 
-              {/* BAGIAN KONTEN BAWAH TETAP SAMA... */}
+              {/* BAGIAN KONTEN BAWAH */}
               <div className="p-6 md:p-8 flex flex-col flex-1">
                 <div className="flex flex-wrap items-center gap-2 mb-5">
                   {item.tags?.map((tag, tIdx) => (

@@ -89,7 +89,7 @@ export default function AboutHero() {
 
         {/* KANAN: TEXT BIOGRAFI */}
         <div className="flex-1 space-y-6 text-left md:pt-2">
-          <h1 className="inline-block text-3xl sm:text-wxl md:text-2xl font-plex tracking-tight font-bold">
+          <h1 className="inline-block text-3xl sm:text-wxl md:text-2xl font-sans font-black tracking-tight">
             About Me
           </h1>
           <div className="space-y-4 text-sm sm:text-base text-[#121212]/80 dark:text-gray-300 leading-relaxed font-sans max-w-xl">
