@@ -19,7 +19,7 @@ export default function Footer() {
             
             <div className="flex flex-wrap items-center gap-3">
               <a 
-                href="https://github.com" 
+                href="https://github.com/nopalbayview/" 
                 target="_blank" 
                 rel="noreferrer" 
                 className="group flex items-center gap-2.5 px-4 py-2 border-2 border-[#121212]/15 dark:border-white/15 rounded-none bg-transparent hover:bg-[#121212]/5 dark:hover:bg-white/5 transition-all duration-300 hover:border-cyan-500/50 dark:hover:border-cyan-500/50"
@@ -31,7 +31,7 @@ export default function Footer() {
               </a>
 
               <a 
-                href="https://wa.me" 
+                href="https://wa.me/62895360571733" 
                 target="_blank" 
                 rel="noreferrer" 
                 className="group flex items-center gap-2.5 px-4 py-2 border-2 border-[#121212]/15 dark:border-white/15 rounded-none bg-transparent hover:bg-[#121212]/5 dark:hover:bg-white/5 transition-all duration-300 hover:border-cyan-500/50 dark:hover:border-cyan-500/50"
