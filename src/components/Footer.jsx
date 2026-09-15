@@ -1,5 +1,7 @@
+'use client';
+
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { FaGithub, FaWhatsapp, FaInstagram, FaDiscord } from 'react-icons/fa';
 
 export default function Footer() {
@@ -81,31 +83,31 @@ export default function Footer() {
             <div className="flex flex-col space-y-5 lg:mx-auto">
               <h4 className="text-sm font-semibold uppercase tracking-widest text-[#121212] dark:text-white font-sans">HOME</h4>
               <div className="flex flex-col space-y-3 text-sm text-gray-600 dark:text-gray-400">
-                <Link to="/#hero" className="hover:text-cyan-500 dark:hover:text-cyan-400 font-medium font-sans transition-colors">Home</Link>
-                <Link to="/#techstack" className="hover:text-cyan-500 dark:hover:text-cyan-400 font-medium font-sans transition-colors">Techstack</Link>
-                <Link to="/#education" className="hover:text-cyan-500 dark:hover:text-cyan-400 font-medium font-sans transition-colors">Education</Link>
+                <Link href="/#hero" className="hover:text-cyan-500 dark:hover:text-cyan-400 font-medium font-sans transition-colors">Home</Link>
+                <Link href="/#techstack" className="hover:text-cyan-500 dark:hover:text-cyan-400 font-medium font-sans transition-colors">Techstack</Link>
+                <Link href="/#education" className="hover:text-cyan-500 dark:hover:text-cyan-400 font-medium font-sans transition-colors">Education</Link>
               </div>
             </div>
 
             <div className="flex flex-col space-y-5 lg:mx-auto">
               <h4 className="text-sm font-semibold uppercase tracking-widest text-[#121212] dark:text-white font-sans">ABOUT</h4>
               <div className="flex flex-col space-y-3 text-sm text-gray-600 dark:text-gray-400">
-                <Link to="/about#hero" className="hover:text-cyan-500 dark:hover:text-cyan-400 font-medium font-sans transition-colors">About</Link>
-                <Link to="/about#workflow" className="hover:text-cyan-500 dark:hover:text-cyan-400 font-medium font-sans transition-colors">Services</Link>
+                <Link href="/about#hero" className="hover:text-cyan-500 dark:hover:text-cyan-400 font-medium font-sans transition-colors">About</Link>
+                <Link href="/about#workflow" className="hover:text-cyan-500 dark:hover:text-cyan-400 font-medium font-sans transition-colors">Services</Link>
               </div>
             </div>
 
             <div className="flex flex-col space-y-5 lg:mx-auto">
               <h4 className="text-sm font-semibold uppercase tracking-widest text-[#121212] dark:text-white font-sans">PROJECTS</h4>
               <div className="flex flex-col space-y-3 text-sm text-gray-600 dark:text-gray-400">
-                <Link to="/projects#hero" className="hover:text-cyan-500 dark:hover:text-cyan-400 font-medium font-sans transition-colors">Projects</Link>
+                <Link href="/projects#hero" className="hover:text-cyan-500 dark:hover:text-cyan-400 font-medium font-sans transition-colors">Projects</Link>
               </div>
             </div>
 
             <div className="flex flex-col space-y-5 lg:mx-auto">
               <h4 className="text-sm font-semibold uppercase tracking-widest text-[#121212] dark:text-white font-sans">CONTACT</h4>
               <div className="flex flex-col space-y-3 text-sm text-gray-600 dark:text-gray-400">
-                <Link to="/contact#hero" className="hover:text-cyan-500 dark:hover:text-cyan-400 font-medium font-sans transition-colors">Contact</Link>
+                <Link href="/contact#hero" className="hover:text-cyan-500 dark:hover:text-cyan-400 font-medium font-sans transition-colors">Contact</Link>
               </div>
             </div>
 

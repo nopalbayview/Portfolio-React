@@ -1,5 +1,6 @@
+'use client';
+
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { ArrowUpRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { projectList } from '../../data/projects/projects';

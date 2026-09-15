@@ -1,16 +1,9 @@
-import React, { useEffect } from 'react';
+'use client';
+
+import React from 'react';
 import { motion } from 'framer-motion';
 
-export default function Preloader({ onComplete }) {
-  useEffect(() => {
-    // Timer disamakan persis dengan durasi animasi bar (2.5 detik)
-    const completeTimer = setTimeout(() => {
-      onComplete();
-    }, 2500);
-
-    return () => clearTimeout(completeTimer);
-  }, [onComplete]);
-
+export default function Preloader() {
   return (
     <div className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-gray-50 dark:bg-[#121212] overflow-hidden transition-colors duration-300">
       
@@ -26,7 +19,7 @@ export default function Preloader({ onComplete }) {
         <motion.div
           initial={{ width: "0%" }}
           animate={{ width: "100%" }}
-          transition={{ duration: 2.5, ease: "easeInOut" }}
+          transition={{ duration: 0.3, ease: "easeInOut", repeat: Infinity }}
           className="absolute left-0 top-0 h-full bg-cyan-400 z-10 overflow-hidden"
         >
           {/* Layer 3: Teks terbalik (Putih di Light Mode, Hitam di Dark Mode) */}

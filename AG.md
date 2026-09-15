@@ -1,1 +1,0 @@
-When running shell commands to inspect files, git, or build outputs, prepend commands with `rtk` (e.g., `rtk git status`, `rtk cat <file>`) to minimize token consumption.

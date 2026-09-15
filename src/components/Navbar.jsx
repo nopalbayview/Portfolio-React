@@ -1,5 +1,8 @@
+'use client';
+
 import React, { useState, useEffect, useRef } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Home, User, Folder, MessageSquare, Sun, Moon, Menu, X } from 'lucide-react';
 import { motion, useMotionValue, useSpring, useTransform, useScroll, AnimatePresence } from 'framer-motion';
 
@@ -27,7 +30,7 @@ function DockItem({ mouseX, item, isActive }) {
   };
 
   const Wrapper = item.path ? Link : 'button';
-  const wrapperProps = item.path ? { to: item.path } : { type: 'button' };
+  const wrapperProps = item.path ? { href: item.path } : { type: 'button' };
 
   return (
     <Wrapper {...wrapperProps} onClick={handleClick} className="focus:outline-none flex items-center justify-center">
@@ -69,14 +72,17 @@ function DockItem({ mouseX, item, isActive }) {
 // KOMPONEN UTAMA NAVBAR
 // ============================================================================
 export default function Navbar() {
-  const location = useLocation();
+  const pathname = usePathname();
+  const hash = typeof window !== 'undefined' ? window.location.hash : '';
   const mouseX = useMotionValue(Infinity);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 });
 
-  const [isDark, setIsDark] = useState(() => localStorage.getItem('theme') !== 'light');
+  const [isDark, setIsDark] = useState(() =>
+    typeof window !== 'undefined' ? localStorage.getItem('theme') !== 'light' : true
+  );
 
   useEffect(() => {
     document.documentElement.classList.toggle('dark', isDark);
@@ -124,12 +130,12 @@ export default function Navbar() {
 
   const checkActive = (path) => {
     if (!path) return false;
-    if (path === '/') return location.pathname === '/' && (!location.hash || location.hash === '#hero');
+    if (path === '/') return pathname === '/' && (!hash || hash === '#hero');
     if (path.includes('#')) {
-      const [route, hash] = path.split('#');
-      return location.pathname === route && location.hash === `#${hash}`;
+      const [route, h] = path.split('#');
+      return pathname === route && hash === `#${h}`;
     }
-    return location.pathname === path;
+    return pathname === path;
   };
 
   const handleMobileNavClick = (item) => {
@@ -195,7 +201,7 @@ export default function Navbar() {
                   const isActive = checkActive(item.path);
                   const Icon = item.icon;
                   const Wrapper = item.path ? Link : 'button';
-                  const wrapperProps = item.path ? { to: item.path } : { type: 'button' };
+                  const wrapperProps = item.path ? { href: item.path } : { type: 'button' };
 
                   return (
                     <Wrapper

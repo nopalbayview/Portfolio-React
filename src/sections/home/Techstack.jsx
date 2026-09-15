@@ -1,6 +1,8 @@
+'use client';
+
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom'; // Untuk navigasi ke halaman projects
+import Link from 'next/link';
 import { ArrowRight } from 'lucide-react'; // Icon panah yang sama dengan contact
 import { techRow1, techRow2 } from '../../data/home/techstack';
 
@@ -91,7 +93,7 @@ export default function TechStack() {
         className="mt-24 px-6 flex justify-center relative z-10 mb-10"
       >
         <Link 
-          to="/projects" 
+          href="/projects" 
           className="inline-flex w-max bg-cyan-400 hover:bg-cyan-300 text-black font-black tracking-wide py-4 px-8 rounded-xl justify-center items-center gap-2 transition-all duration-300 active:scale-95 shadow-[0_0_15px_rgba(34,211,238,0.3)] hover:shadow-[0_0_25px_rgba(34,211,238,0.5)]"
         >
           See My Projects <ArrowRight size={18} />
