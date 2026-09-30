@@ -6,13 +6,13 @@ import { FaGithub, FaWhatsapp, FaInstagram, FaDiscord } from 'react-icons/fa';
 
 export default function Footer() {
   return (
-    <footer className="relative w-full min-h-screen flex flex-col border-t border-[#121212]/10 dark:border-white/10 bg-white dark:bg-[#121212] pt-10 transition-colors duration-300 overflow-hidden">
+    <footer className="relative w-full min-h-screen flex flex-col border-t-2 border-[#121212]/10 dark:border-white/10 bg-white dark:bg-[#121212] pt-10 transition-colors duration-300 overflow-hidden">
       
       {/* Container Utama untuk seluruh Footer */}
       <div className="max-w-7xl w-full mx-auto px-6 md:px-12 flex flex-col flex-1 relative z-10">
         
         {/* =========================================
-            BAHAGIAN ATAS: Sosmed & Navigasi
+            BAGIAN ATAS: Sosmed & Navigasi
         ========================================= */}
         <div className="flex flex-col lg:flex-row items-start justify-between gap-16 lg:gap-10 pb-12">
           
@@ -20,53 +20,59 @@ export default function Footer() {
           <div className="flex flex-col space-y-6 w-full lg:w-auto">
             
             <div className="flex flex-wrap items-center gap-3">
+              
+              {/* GITHUB BUTTON */}
               <a 
                 href="https://github.com/nopalbayview/" 
                 target="_blank" 
                 rel="noreferrer" 
-                className="group flex items-center gap-2.5 px-4 py-2 border-2 border-[#121212]/15 dark:border-white/15 rounded-none bg-transparent hover:bg-[#121212]/5 dark:hover:bg-white/5 transition-all duration-300 hover:border-cyan-500/50 dark:hover:border-cyan-500/50"
+                className="group flex items-center gap-2.5 px-4 py-2 border-2 border-[#121212]/15 dark:border-white/15 rounded-none bg-transparent hover:bg-cyan-400 transition-all duration-300 hover:border-cyan-400"
               >
-                <FaGithub className="text-base text-[#121212]/70 dark:text-gray-400 group-hover:text-cyan-500 dark:group-hover:text-cyan-400 transition-colors" />
-                <span className="text-xs font-semibold font-sans text-[#121212]/80 dark:text-gray-300 group-hover:text-cyan-500 dark:group-hover:text-cyan-400 transition-colors">
+                <FaGithub className="text-base text-[#121212]/70 dark:text-gray-400 group-hover:text-black transition-colors" />
+                <span className="text-xs font-semibold font-sans text-[#121212]/80 dark:text-gray-300 group-hover:text-black transition-colors">
                   Github
                 </span>
               </a>
 
+              {/* WHATSAPP BUTTON */}
               <a 
                 href="https://wa.me/62895360571733" 
                 target="_blank" 
                 rel="noreferrer" 
-                className="group flex items-center gap-2.5 px-4 py-2 border-2 border-[#121212]/15 dark:border-white/15 rounded-none bg-transparent hover:bg-[#121212]/5 dark:hover:bg-white/5 transition-all duration-300 hover:border-cyan-500/50 dark:hover:border-cyan-500/50"
+                className="group flex items-center gap-2.5 px-4 py-2 border-2 border-[#121212]/15 dark:border-white/15 rounded-none bg-transparent hover:bg-cyan-400 transition-all duration-300 hover:border-cyan-400"
               >
-                <FaWhatsapp className="text-base text-[#121212]/70 dark:text-gray-400 group-hover:text-cyan-500 dark:group-hover:text-cyan-400 transition-colors" />
-                <span className="text-xs font-semibold font-sans text-[#121212]/80 dark:text-gray-300 group-hover:text-cyan-500 dark:group-hover:text-cyan-400 transition-colors">
+                <FaWhatsapp className="text-base text-[#121212]/70 dark:text-gray-400 group-hover:text-black transition-colors" />
+                <span className="text-xs font-semibold font-sans text-[#121212]/80 dark:text-gray-300 group-hover:text-black transition-colors">
                   Whatsapp
                 </span>
               </a>
 
+              {/* INSTAGRAM BUTTON */}
               <a 
                 href="https://instagram.com" 
                 target="_blank" 
                 rel="noreferrer" 
-                className="group flex items-center gap-2.5 px-4 py-2 border-2 border-[#121212]/15 dark:border-white/15 rounded-none bg-transparent hover:bg-[#121212]/5 dark:hover:bg-white/5 transition-all duration-300 hover:border-cyan-500/50 dark:hover:border-cyan-500/50"
+                className="group flex items-center gap-2.5 px-4 py-2 border-2 border-[#121212]/15 dark:border-white/15 rounded-none bg-transparent hover:bg-cyan-400 transition-all duration-300 hover:border-cyan-400"
               >
-                <FaInstagram className="text-base text-[#121212]/70 dark:text-gray-400 group-hover:text-cyan-500 dark:group-hover:text-cyan-400 transition-colors" />
-                <span className="text-xs font-semibold font-sans text-[#121212]/80 dark:text-gray-300 group-hover:text-cyan-500 dark:group-hover:text-cyan-400 transition-colors">
+                <FaInstagram className="text-base text-[#121212]/70 dark:text-gray-400 group-hover:text-black transition-colors" />
+                <span className="text-xs font-semibold font-sans text-[#121212]/80 dark:text-gray-300 group-hover:text-black transition-colors">
                   Instagram
                 </span>
               </a>
 
+              {/* DISCORD BUTTON */}
               <a 
                 href="https://discord.com" 
                 target="_blank" 
                 rel="noreferrer" 
-                className="group flex items-center gap-2.5 px-4 py-2 border-2 border-[#121212]/15 dark:border-white/15 rounded-none bg-transparent hover:bg-[#121212]/5 dark:hover:bg-white/5 transition-all duration-300 hover:border-cyan-500/50 dark:hover:border-cyan-500/50"
+                className="group flex items-center gap-2.5 px-4 py-2 border-2 border-[#121212]/15 dark:border-white/15 rounded-none bg-transparent hover:bg-cyan-400 transition-all duration-300 hover:border-cyan-400"
               >
-                <FaDiscord className="text-base text-[#121212]/70 dark:text-gray-400 group-hover:text-cyan-500 dark:group-hover:text-cyan-400 transition-colors" />
-                <span className="text-xs font-semibold font-sans text-[#121212]/80 dark:text-gray-300 group-hover:text-cyan-500 dark:group-hover:text-cyan-400 transition-colors">
+                <FaDiscord className="text-base text-[#121212]/70 dark:text-gray-400 group-hover:text-black transition-colors" />
+                <span className="text-xs font-semibold font-sans text-[#121212]/80 dark:text-gray-300 group-hover:text-black transition-colors">
                   Discord
                 </span>
               </a>
+
             </div>
 
             <div>
@@ -120,9 +126,8 @@ export default function Footer() {
         <div className="w-full border-t-2 border-[#121212]/10 dark:border-white/10" />
 
         {/* =========================================
-            BAHAGIAN BAWAH: Teks Raksasa & Motivasi
+            BAGIAN BAWAH: Teks Raksasa & Motivasi
         ========================================= */}
-        {/* flex-1 akan membuat kotak ini membesar mengisi seluruh sisa layar ke bawah */}
         <div className="flex-1 flex flex-col justify-center items-center text-center py-16 px-4">
           
           <h1 className="text-6xl md:text-8xl lg:text-[130px] leading-none font-bold uppercase tracking-widest font-sans text-[#121212] dark:text-white mb-6 transition-all duration-500 hover:text-transparent dark:hover:text-transparent hover:[-webkit-text-stroke:3px_#22d3ee] dark:hover:[-webkit-text-stroke:3px_#22d3ee] hover:drop-shadow-[0_0_30px_rgba(34,211,238,0.4)] cursor-default">

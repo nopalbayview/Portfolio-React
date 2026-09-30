@@ -5,6 +5,7 @@ import React, { useRef, useEffect } from 'react';
 // Menambahkan props 'color' dengan nilai default hijau
 export default function EducationShader({ color = [0.0, 0.8, 0.3] }) {
   const canvasRef = useRef(null);
+  const [r, g, b] = color;
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -96,8 +97,12 @@ export default function EducationShader({ color = [0.0, 0.8, 0.3] }) {
     };
     render();
 
-    return () => cancelAnimationFrame(animationFrameId);
-  }, [color]); // Tambahkan color sebagai dependency agar bisa re-render jika berubah
+    return () => {
+      cancelAnimationFrame(animationFrameId);
+      gl.deleteProgram(program);
+      gl.deleteBuffer(positionBuffer);
+    };
+  }, [r, g, b]); // Dependensi primitive (bukan array) agar setup WebGL tidak re-init tiap render
 
   return (
     <canvas 

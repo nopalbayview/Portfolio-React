@@ -1,4 +1,3 @@
-// src/data/about.js
 import { Code2, BarChart2, Server, AppWindow, Sparkles, Paintbrush, PaintRoller, Paintbrush2Icon, PaintbrushVerticalIcon, ZapIcon } from 'lucide-react';
 
 export const capabilitiesData = [
@@ -23,25 +22,25 @@ export const profileCardsData = [
     {
         id: 1, 
         title: 'Profile 1', 
-        image: '/projects/Jiwoo1.jpeg', 
+        image: '/about/Jiwoo1.jpeg', 
         tag: 'Developer'
     },
     { 
         id: 2, 
         title: 'Profile 2', 
-        image: '/projects/Jiwoo2.jpeg', 
+        image: '/about/Jiwoo2.jpeg', 
         tag: 'Creative' 
     },
     { 
         id: 3, 
         title: 'Profile 3', 
-        image: '/projects/Jiwoo3.jpeg', 
+        image: '/about/Jiwoo3.jpeg', 
         tag: 'Thinker' 
     },
     { 
         id: 4, 
         title: 'Profile 4', 
-        image: '/projects/Jiwoo4.jpeg', 
+        image: '/about/Jiwoo4.jpeg', 
         tag: 'Builder' 
     },
 ];

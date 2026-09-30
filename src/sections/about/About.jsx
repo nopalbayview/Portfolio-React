@@ -32,10 +32,6 @@ export default function AboutHero() {
       id="hero" 
       className="relative overflow-hidden min-h-screen w-full flex items-center justify-center pt-24 pb-16 transition-colors duration-300"
     >
-      <div 
-        aria-hidden="true" 
-        className="absolute top-0 bottom-0 left-[50%] w-[100vw] -translate-x-1/2 bg-grid-pattern opacity-70 pointer-events-none" 
-      />
       <div className="w-full max-w-6xl mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center md:items-start justify-center gap-12 lg:gap-24">
         
         {/* KIRI: STACKED ANIMATED PHOTOS DENGAN FRAMER MOTION */}
@@ -70,7 +66,7 @@ export default function AboutHero() {
                   if (isFront) handleNextCard();
                 }}
                 style={{ zIndex }}
-                className={`absolute left-0 right-0 bottom-0 ${topPosition} rounded-2xl overflow-hidden border border-[#121212]/10 dark:border-white/10 shadow-2xl transition-all duration-700 ease-in-out select-none ${opacity} ${
+                className={`absolute left-0 right-0 bottom-0 ${topPosition} rounded-2xl overflow-hidden border border-[#121212]/10 dark:border-white/10 transition-all duration-700 ease-in-out select-none ${opacity} ${
                   isFront 
                     ? 'cursor-pointer hover:border-cyan-400 dark:hover:border-cyan-400' 
                     : 'cursor-default'

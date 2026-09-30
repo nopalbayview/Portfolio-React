@@ -26,7 +26,7 @@ export default function RootLayout({ children }) {
           }}
         />
       </head>
-      <body className="bg-white dark:bg-[#121214]">
+      <body className="bg-white dark:bg-[#121212]">
         <AppShell>{children}</AppShell>
       </body>
     </html>

@@ -23,20 +23,6 @@
   }
 }
 
-/* Background Grid Khusus Section Lokal */
-.bg-grid-pattern {
-  background-size: 50px 50px;
-  background-position: 0 0; /* Paksa mulai dari titik nol mutlak */
-  
-  /* Gunakan 90deg dan 180deg agar garisnya 100% tegak lurus */
-  background-image: 
-    linear-gradient(90deg, rgba(0, 0, 0, 0.12) 1px, transparent 1px),
-    linear-gradient(180deg, rgba(0, 0, 0, 0.12) 1px, transparent 1px);
-  
-  -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 70%);
-  mask-image: radial-gradient(ellipse at center, black 40%, transparent 70%);
-}
-
 :root {
   background-color: #ffffff;
   color: #0f172a;
@@ -46,12 +32,6 @@ html.dark {
   background-color: #121212;
   color: #ffffff;
 }
-
-html.dark .bg-grid-pattern {
-  background-image: 
-    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
-} 
 
 body {
   background-color: inherit;

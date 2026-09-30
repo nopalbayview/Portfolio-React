@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 
 export default function Preloader() {
   return (
-    <div className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-gray-50 dark:bg-[#121212] overflow-hidden transition-colors duration-300">
+    <div className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-gray-50 dark:bg-black overflow-hidden transition-colors duration-300">
       
       <div className="relative w-64 md:w-80 h-16 md:h-20 border-3 border-black/10 dark:border-white/10 overflow-hidden bg-transparent transition-colors duration-300">
         

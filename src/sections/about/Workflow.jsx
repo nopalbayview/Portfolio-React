@@ -9,14 +9,8 @@ export default function Workflow() {
   return (
     <section 
       id="workflow" 
-      className="relative w-full py-24 overflow-hidden transition-colors duration-300"
+      className="relative w-full py-24 pb-40 overflow-hidden transition-colors duration-300"
     >
-      {/* Background Grid */}
-      <div 
-        aria-hidden="true" 
-        className="absolute top-0 bottom-0 left-[50%] w-[100vw] -translate-x-1/2 bg-grid-pattern opacity-70 pointer-events-none" 
-      />
-
       {/* PERUBAHAN: Container Utama yang membungkus Judul DAN Grid */}
       <div className="relative z-10 w-full max-w-screen-2xl mx-auto px-6 md:px-6">
         
@@ -55,17 +49,18 @@ export default function Workflow() {
             return (
               <GlowCard
                 key={index}
+                radius="rounded-none"
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0}}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: index * 0.2 }} 
-                className="group w-full h-full min-h-[300px] shadow-xl transition-all duration-500 cursor-pointer"
+                className="group w-full h-full min-h-[300px] transition-all duration-500 cursor-pointer"
               >
                 
                 <div className="relative p-8 h-full w-full flex flex-col justify-between">
                   <div className="flex-1 flex flex-col justify-start space-y-3 py-2">
                     <Icon size={28} className="text-cyan-500 dark:text-cyan-400 group-hover:scale-110 transition-transform duration-300" />
-                    <h3 className="text-2xl font-bold text-[#121212] dark:text-white font-sans group-hover:text-cyan-500 dark:group-hover:text-cyan-400 transition-colors duration-300">
+                    <h3 className="text-2xl font-bold text-[#121212] dark:text-white font-sans">
                       {item.title}
                     </h3>
                   </div>

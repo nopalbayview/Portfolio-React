@@ -11,12 +11,6 @@ export default function Education () {
     <section id="education" 
       className="relative w-full py-15 overflow-hidden transition-colors duration-300">
 
-      {/* Layer Grid Pattern Khusus Education */}
-      <div 
-        aria-hidden="true" 
-        className="absolute top-0 bottom-0 left-[50%] w-[100vw] -translate-x-1/2 bg-grid-pattern opacity-70 pointer-events-none" 
-      />
-
       <div className="relative z-10 w-full max-w-screen-2xl mx-auto px-6 md:px-6 mb-20 flex flex-col items-start text-left space-y-1">
         <motion.h2
           initial={{ opacity: 0, x: -50 }}
@@ -56,30 +50,29 @@ export default function Education () {
             return (
               <GlowCard 
                 key={idx} 
+                radius="rounded-none"
                 glowColor={glow.primary}
                 glowColorSecondary={glow.secondary} 
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0}}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: 0.2 + (idx * 0.15), ease: "easeOut" }}
-                // PERUBAHAN: hover:scale-[1.02] telah dihapus agar card tetap diam saat di-hover
-                className={`group w-full h-full min-h-[350px] shadow-xl transition-all duration-500 cursor-pointer ${edu.hoverBorder}`}
+                className={`group w-full h-full min-h-[350px] transition-all duration-500 cursor-pointer ${edu.hoverBorder}`}
               >
                 
                 <div className="relative p-8 h-full w-full flex flex-col">
                   
                   <EducationShader color={shaderColor} />
                   
-                  {/* Gradient hitam ditinggikan sedikit (via-black/60) agar teks lebih mudah dibaca di atas shader */}
+                  {/* Gradient hitam */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent pointer-events-none z-10" />
 
-                  {/* Menggunakan justify-end agar teks mengelompok rapi di bagian bawah card */}
                   <div className="relative z-20 flex flex-col h-full justify-end"> 
-                      <h3 className="text-xl font-bold text-white font-sans group-hover:text-cyan-400 transition-colors duration-300">
+                      <h3 className="text-xl font-bold text-white font-sans">
                         {edu.title}
                       </h3>
                       <div className="my-4 h-[1px] w-full bg-white/10" />
-                      <span className="text-sm font-mono text-cyan-400">
+                      <span className="text-sm font-mono text-gray-300">
                         {edu.period}
                       </span>
                       <p className="mt-2 text-sm text-gray-300 leading-relaxed font-sans">
