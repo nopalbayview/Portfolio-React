@@ -60,7 +60,7 @@ export default function Hero() {
           className="w-full lg:w-[380px] h-[500px] flex items-center justify-center relative"
         >
           {/* Catatan: Pastikan path foto di bawah ini sesuai dengan folder public project kamu */}
-          <Lanyard photo="/public/about/Jiwoo1.png" alt="Nouval Adibayu" accent="#00e5ff" />
+          <Lanyard photo="/about/Jiwoo1.jpeg" alt="Nouval Adibayu" accent="#00e5ff" />
         </motion.div>
 
       </div>

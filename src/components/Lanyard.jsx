@@ -1,26 +1,28 @@
 "use client";
 import { useEffect, useRef } from "react";
 
-
-// ---- Tuning: ubah angka ini untuk mengatur "rasa" fisikanya ----
-const SEGMENTS = 8;      // jumlah ruas tali
-const ROPE_LEN = 210;    // panjang tali (px)
+// ---- Tuning Fisika Tali ----
+const SEGMENTS = 8;      
+const ROPE_LEN = 210;    
 const CARD_W = 210;
 const CARD_H = 300;
-const GRAVITY = 0.55;    // makin besar makin berat
-const DAMPING = 0.992;   // makin kecil makin cepat berhenti berayun
-const STIFFNESS = 0.85;  // 1 = tali kaku, <1 = tali agak melar (efek membal)
+const GRAVITY = 0.55;    
+const DAMPING = 0.992;   
+const STIFFNESS = 0.85;  
 const ITERATIONS = 12;
-const STEP = 1000 / 60;  // fisika berjalan di 60 fps tetap
+const STEP = 1000 / 60;  
 
 export default function Lanyard({
-  photo = "/projects/Jiwoo1.jpeg",
+  photo = "/about/Jiwoo1.jpeg",
+  backPhoto = null,
   alt = "Foto profil",
-  accent = "#00d4f5",
+  accent = "#000000", // Tali dibuat dominan hitam
 }) {
   const wrapRef = useRef(null);
   const canvasRef = useRef(null);
   const cardRef = useRef(null);
+
+  const rearImage = backPhoto || photo;
 
   useEffect(() => {
     const wrap = wrapRef.current;
@@ -29,14 +31,15 @@ export default function Lanyard({
     const ctx = cv.getContext("2d");
 
     let w = 0, h = 0, raf, last = performance.now(), acc = 0;
-    let drag = null; // { ox, oy } offset pointer -> pusat kartu
+    let drag = null; 
     let target = { x: 0, y: 0 };
+    let flipAngle = 0; 
+    let lastX = 0;
 
-    // titik 0 = jangkar, 1..SEGMENTS = tali (SEGMENTS = titik gantung kartu), SEGMENTS+1 = pusat kartu
     const N = SEGMENTS + 2;
     const P = Array.from({ length: N }, () => ({ x: 0, y: 0, px: 0, py: 0, im: 1 }));
     P[0].im = 0;
-    P[N - 1].im = 0.5; // kartu lebih berat dari tali
+    P[N - 1].im = 0.5; 
     const A = P[SEGMENTS], B = P[N - 1];
 
     const links = [];
@@ -59,7 +62,7 @@ export default function Lanyard({
         p.x = p.px = ax;
         p.y = p.py = ay + t;
       });
-      B.px -= 14; // dorongan awal supaya kartu berayun saat pertama muncul
+      B.px -= 14; 
     };
 
     resize();
@@ -74,7 +77,7 @@ export default function Lanyard({
       for (let i = 1; i < N; i++) {
         const p = P[i];
         if (p === B && drag) {
-          p.px = p.x; // simpan kecepatan terakhir supaya bisa "dilempar"
+          p.px = p.x; 
           p.x = target.x;
           p.y = target.y;
           continue;
@@ -89,12 +92,12 @@ export default function Lanyard({
       }
 
       for (let it = 0; it < ITERATIONS; it++) {
-        for (const [i, j, rest, k] of links) {
-          const a = P[i], b = P[j];
-          const ia = a === B && drag ? 0 : a.im;
-          const ib = b === B && drag ? 0 : b.im;
-          const wsum = ia + ib;
-          if (!wsum) continue;
+        const [i, j, rest, k] = links[links.length - 1];
+        const a = P[i], b = P[j];
+        const ia = a === B && drag ? 0 : a.im;
+        const ib = b === B && drag ? 0 : b.im;
+        const wsum = ia + ib;
+        if (wsum) {
           const dx = b.x - a.x, dy = b.y - a.y;
           const d = Math.hypot(dx, dy) || 0.0001;
           const c = ((d - rest) / d) * k;
@@ -103,12 +106,42 @@ export default function Lanyard({
           b.x -= dx * c * (ib / wsum);
           b.y -= dy * c * (ib / wsum);
         }
+
+        for (let idx = 0; idx < links.length - 1; idx++) {
+          const [li, lj, lrest, lk] = links[idx];
+          const la = P[li], lb = P[lj];
+          const lia = la === B && drag ? 0 : la.im;
+          const lib = lb === B && drag ? 0 : lb.im;
+          const lwsum = lia + lib;
+          if (!lwsum) continue;
+          const ldx = lb.x - la.x, ldy = lb.y - la.y;
+          const ld = Math.hypot(ldx, ldy) || 0.0001;
+          const lc = ((ld - lrest) / ld) * lk;
+          la.x += ldx * lc * (lia / lwsum);
+          la.y += ldy * lc * (lia / lwsum);
+          lb.x -= ldx * lc * (lib / lwsum);
+          lb.y -= ldy * lc * (lib / lwsum);
+        }
       }
     };
 
     const draw = () => {
       ctx.clearRect(0, 0, w, h);
       ctx.lineJoin = ctx.lineCap = "round";
+      
+      // Gambar Tali Utama (Hitam Pekat)
+      ctx.beginPath();
+      ctx.moveTo(P[0].x - 4, P[0].y);
+      for (let i = 1; i < SEGMENTS; i++) {
+        const mx = (P[i].x + P[i + 1].x) / 2 - 4, my = (P[i].y + P[i + 1].y) / 2;
+        ctx.quadraticCurveTo(P[i].x - 4, P[i].y, mx, my);
+      }
+      ctx.lineTo(A.x - 4, A.y);
+      ctx.strokeStyle = "#1a1a1a"; // Hitam kain lanyard
+      ctx.lineWidth = 10;
+      ctx.stroke();
+
+      // Garis tengah / tekstur tipis pada tali agar terlihat realistis
       ctx.beginPath();
       ctx.moveTo(P[0].x, P[0].y);
       for (let i = 1; i < SEGMENTS; i++) {
@@ -116,20 +149,32 @@ export default function Lanyard({
         ctx.quadraticCurveTo(P[i].x, P[i].y, mx, my);
       }
       ctx.lineTo(A.x, A.y);
-      ctx.strokeStyle = "rgba(255,255,255,0.22)";
-      ctx.lineWidth = 17;
-      ctx.stroke();
-      ctx.strokeStyle = "#050505";
-      ctx.lineWidth = 15;
-      ctx.stroke();
-      ctx.strokeStyle = accent;
-      ctx.lineWidth = 1.5;
+      ctx.strokeStyle = "#333333"; 
+      ctx.lineWidth = 2;
       ctx.stroke();
 
-      // kartu menggantung dari titik A: sudut mengikuti arah A dari pusat kartu
+      // Fisika Putaran 3D Kartu
+      const vx = B.x - lastX;
+      lastX = B.x;
+      flipAngle += vx * 0.03;
+      flipAngle *= 0.95;
+
       const ang = Math.atan2(A.x - B.x, -(A.y - B.y));
-      cardEl.style.transform =
-        `translate(${B.x - CARD_W / 2}px, ${B.y - CARD_H / 2}px) rotate(${ang}rad)`;
+      const scaleX = Math.cos(flipAngle);
+      
+      cardEl.style.transform = `translate(${B.x - CARD_W / 2}px, ${B.y - CARD_H / 2}px) rotate(${ang}rad) scaleX(${scaleX})`;
+      
+      const frontSide = cardEl.querySelector('.card-front');
+      const backSide = cardEl.querySelector('.card-back');
+      if (frontSide && backSide) {
+        if (scaleX < 0) {
+          frontSide.style.display = "none";
+          backSide.style.display = "block";
+        } else {
+          frontSide.style.display = "block";
+          backSide.style.display = "none";
+        }
+      }
     };
 
     const loop = (now) => {
@@ -175,12 +220,12 @@ export default function Lanyard({
       cardEl.removeEventListener("pointerup", up);
       cardEl.removeEventListener("pointercancel", up);
     };
-  }, [accent]);
+  }, []);
 
   return (
     <div
       ref={wrapRef}
-      style={{ position: "relative", width: "100%", height: "100%", minHeight: 640, overflow: "hidden" }}
+      style={{ position: "relative", width: "100%", height: "100%", minHeight: 640, overflow: "hidden", perspective: 1000 }}
     >
       <canvas
         ref={canvasRef}
@@ -198,36 +243,121 @@ export default function Lanyard({
           userSelect: "none",
           touchAction: "none",
           willChange: "transform",
+          transformStyle: "preserve-3d",
         }}
       >
-        {/* klip logam tempat tali terpasang */}
+        {/* --- KANCING PENGATUR / KULIT PENGIKAT TALI MERAH/HITAM --- */}
         <div
           style={{
             position: "absolute",
-            top: -10,
+            top: -24,
             left: "50%",
-            width: 26,
+            width: 24,
             height: 22,
-            marginLeft: -13,
-            borderRadius: 0,
-            background: "linear-gradient(#d9d9d9, #7a7a7a)",
-            zIndex: 1,
+            marginLeft: -12,
+            background: "#111111",
+            borderRadius: 4,
+            zIndex: 11,
+            boxShadow: "0 2px 4px rgba(0,0,0,0.5)",
           }}
-        />
-        {/* hanya foto */}
-        <img
-          src={photo}
-          alt={alt}
-          draggable={false}
+        >
+          {/* Kancing Besi Kecil di Tengah Pengikat */}
+          <div
+            style={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              width: 6,
+              height: 6,
+              marginTop: -3,
+              marginLeft: -3,
+              borderRadius: "50%",
+              background: "#c0c0c0",
+              boxShadow: "inset 0 1px 2px rgba(0,0,0,0.6)",
+            }}
+          />
+        </div>
+
+        {/* --- KELOMPOK PENGAIT BESI (LOBSTER / SWIVEL HOOK) --- */}
+        <div
           style={{
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            borderRadius: 0,
-            display: "block",
-            boxShadow: "0 24px 48px rgba(0,0,0,0.55)",
+            position: "absolute",
+            top: -12,
+            left: "50%",
+            width: 18,
+            height: 24,
+            marginLeft: -9,
+            zIndex: 10,
           }}
-        />
+        >
+          {/* Cincin Besi Atas */}
+          <div style={{ width: 12, height: 10, border: "2px solid #d4d4d4", borderRadius: "50%", margin: "0 auto", background: "#e5e5e5" }} />
+          {/* Badan Kait Besi */}
+          <div style={{ width: 14, height: 14, background: "linear-gradient(135deg, #f5f5f5, #737373)", margin: "-2px auto 0", borderRadius: 3, boxShadow: "0 2px 4px rgba(0,0,0,0.4)" }} />
+        </div>
+
+        {/* --- CASE PLASTIK TRANSPARAN (LAMINASI / CARD HOLDER) --- */}
+        <div
+          style={{
+            position: "absolute",
+            inset: -8, // Membuat case plastik sedikit lebih besar dari kartu di dalamnya
+            border: "2px solid rgba(255, 255, 255, 0.35)",
+            borderRadius: 6,
+            background: "rgba(255, 255, 255, 0.04)",
+            backdropFilter: "blur(0.5px)",
+            boxShadow: "0 20px 40px rgba(0,0,0,0.45), inset 0 0 15px rgba(255,255,255,0.15)",
+            zIndex: 5,
+            pointerEvents: "none",
+          }}
+        >
+          {/* Lubang Otoklek / Punch Hole di atas Case Plastik */}
+          <div
+            style={{
+              position: "absolute",
+              top: 4,
+              left: "50%",
+              width: 20,
+              height: 6,
+              marginLeft: -10,
+              borderRadius: 3,
+              background: "rgba(0,0,0,0.35)",
+              border: "1px solid rgba(255,255,255,0.2)",
+            }}
+          />
+        </div>
+
+        {/* SISI DEPAN KARTU */}
+        <div className="card-front" style={{ width: "100%", height: "100%", position: "absolute", inset: 0, backfaceVisibility: "hidden" }}>
+          <img
+            src={photo}
+            alt={alt}
+            draggable={false}
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              borderRadius: 2,
+              display: "block",
+            }}
+          />
+        </div>
+
+        {/* SISI BELAKANG KARTU */}
+        <div className="card-back" style={{ width: "100%", height: "100%", position: "absolute", inset: 0, backfaceVisibility: "hidden", display: "none", transform: "rotateY(180deg)" }}>
+          <img
+            src={rearImage}
+            alt={`${alt} (Belakang)`}
+            draggable={false}
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              borderRadius: 2,
+              display: "block",
+              filter: "brightness(0.9) contrast(1.1)",
+            }}
+          />
+        </div>
       </div>
     </div>
   );

@@ -41,6 +41,32 @@ body {
   min-height: 100vh;
 }
 
+/* ==========================================================================
+   TEKS YANG DISELEKSI (::selection)
+   Cyan sudah jadi satu-satunya aksen di project ini, jadi selection ikut cyan.
+   Teks selection dibikin gelap karena cyan terang -> kontras baca tetap aman.
+   ========================================================================== */
+
+::selection {
+  background-color: #00e5ff;
+  color: #0f172a;
+  text-shadow: none;
+}
+
+/* Firefox masih butuh prefix -moz- */
+::-moz-selection {
+  background-color: #00e5ff;
+  color: #0f172a;
+  text-shadow: none;
+}
+
+/* Teks yang warnanya digeser lewat -webkit-text-fill-color (hover-shimmer)
+   punya fill transparent, jadi tanpa ini teksnya tak terlihat saat diseleksi. */
+.hover-shimmer:hover::selection {
+  -webkit-text-fill-color: #0f172a;
+  color: #0f172a;
+}
+
 /* Custom Slim Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
